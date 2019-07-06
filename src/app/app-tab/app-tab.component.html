@@ -1,0 +1,12 @@
+<ul class="nav nav-tabs justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active" (click)="changeTab('all')" style="cursor: pointer">All Stars</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="changeTab('light')" style="cursor: pointer">Light</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="changeTab('dark')" style="cursor: pointer">Dark</a>
+  </li>
+</ul>
+<app-star-list [characters]="getCharacters()"></app-star-list>
