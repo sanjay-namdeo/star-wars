@@ -22,7 +22,6 @@ export class StarListComponent implements OnInit {
   }
 
   onChangeSide(char) {
-    console.log('from list comp', char);
     this.changedSide.emit(char);
   }
 }

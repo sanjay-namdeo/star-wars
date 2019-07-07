@@ -22,7 +22,6 @@ export class AppTabComponent implements OnInit {
   }
 
   getCharacters() {
-    console.log(this.selectedSide);
     return this.swService.getCharacters(this.selectedSide);
   }
 
