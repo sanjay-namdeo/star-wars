@@ -25,4 +25,8 @@ export class AppTabComponent implements OnInit {
     console.log(this.selectedSide);
     return this.swService.getCharacters(this.selectedSide);
   }
+
+  sideChanged(char) {
+    this.swService.changeSide(char);
+  }
 }

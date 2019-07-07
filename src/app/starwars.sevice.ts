@@ -15,4 +15,9 @@ export class StarWarService {
     }
     return [];
   }
+
+  changeSide(char) {
+    const pos = this.characters.findIndex((c) => c.name === char.name);
+    this.characters[pos].side = char.side;
+  }
 }

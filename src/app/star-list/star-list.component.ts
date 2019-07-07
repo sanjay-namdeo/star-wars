@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { StarWarService } from '../starwars.sevice';
 
 @Component({
@@ -9,6 +9,8 @@ import { StarWarService } from '../starwars.sevice';
 export class StarListComponent implements OnInit {
   @Input() characters;
   swService: StarWarService;
+  @Output() changedSide = new EventEmitter<{name: '', side: ''}>();
+
 
   @Input() selectedSide = 'all';
 
@@ -17,5 +19,10 @@ export class StarListComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  onChangeSide(char) {
+    console.log('from list comp', char);
+    this.changedSide.emit(char);
   }
 }

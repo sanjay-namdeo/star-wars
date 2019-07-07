@@ -9,4 +9,4 @@
     <a class="nav-link" (click)="changeTab('dark')" style="cursor: pointer">Dark</a>
   </li>
 </ul>
-<app-star-list [characters]="getCharacters()"></app-star-list>
+<app-star-list [characters]="getCharacters()" (changedSide)="sideChanged($event)"></app-star-list>
