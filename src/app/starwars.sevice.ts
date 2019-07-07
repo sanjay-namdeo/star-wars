@@ -20,4 +20,16 @@ export class StarWarService {
     const pos = this.characters.findIndex((c) => c.name === char.name);
     this.characters[pos].side = char.side;
   }
+
+  addCharacter(char) {
+    if (char.name === '') {
+      return;
+    }
+    this.characters.filter((c) => {
+      if (c.name === char.name) {
+        return;
+      }
+    });
+    this.characters.push(char);
+  }
 }
