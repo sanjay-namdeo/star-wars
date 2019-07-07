@@ -14,9 +14,7 @@ export class ListItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  changeSide(side: string) {
-    console.log('from item comp', side);
-    this.character.side = side;
-    this.sideChanged.emit({name: this.character.name, side: this.character.side});
+  changeSide(changedSide) {
+    this.sideChanged.emit({name: this.character.name, side: changedSide});
   }
 }
