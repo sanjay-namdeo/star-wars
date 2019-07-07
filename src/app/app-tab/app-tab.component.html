@@ -1,12 +1,21 @@
-<ul class="nav nav-tabs justify-content-center">
-  <li class="nav-item">
-    <a class="nav-link" (click)="changeTab('all')" style="cursor: pointer" [ngClass]="{'active': selectedSide ==='all'}">All Stars</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" (click)="changeTab('light')" style="cursor: pointer" [ngClass]="{'active': selectedSide ==='light'}">Light</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" (click)="changeTab('dark')" style="cursor: pointer" [ngClass]="{'active': selectedSide ==='dark'}">Dark</a>
-  </li>
-</ul>
-<app-star-list [characters]="getCharacters()" (changedSide)="sideChanged($event)"></app-star-list>
+<div class="container" style="margin-block-end: 2%">
+  <div class="row">
+    <div class="col-12">
+      <ul class="nav nav-tabs justify-content-center nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" (click)="changeTab('all')" style="cursor: pointer"
+            [ngClass]="{'active': selectedSide ==='all'}">All Stars</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="changeTab('light')" style="cursor: pointer"
+            [ngClass]="{'active': selectedSide ==='light'}">Light</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="changeTab('dark')" style="cursor: pointer"
+            [ngClass]="{'active': selectedSide ==='dark'}">Dark</a>
+        </li>
+      </ul>
+      <app-star-list [characters]="getCharacters()" (changedSide)="sideChanged($event)"></app-star-list>
+    </div>
+  </div>
+</div>
