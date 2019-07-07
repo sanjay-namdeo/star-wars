@@ -1,8 +1,8 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
   <div class="form-group">
     <label for="name">Name</label>
-    <input type="name" class="form-control" id="name" placeholder="Enter name" name="name" ngModel required>
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <input type="name" class="form-control" id="name" placeholder="Enter name" name="name" ngModel required #name="ngModel">
+    <span *ngIf="name.invalid" class="form-text text-muted">Please enter name</span>
   </div>
   <div class="form-group">
     <select name="side" id="side" class="btn btn-secondary dropdown-toggle" ngModel>
