@@ -1,15 +1,20 @@
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="name" class="form-control" id="name" placeholder="Enter name" name="name" ngModel required #name="ngModel">
-    <span *ngIf="name.invalid" class="form-text text-muted">Please enter name</span>
+<div class="container shadow-sm p-3 mb-5 bg-white rounded">
+  <div class="row">
+    <div class="col-12 center">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="name" class="form-control" id="name" placeholder="Enter name" name="name" ngModel required #name="ngModel">
+              <span *ngIf="name.invalid" class="form-text text-muted">Please enter name</span>
+            </div>
+            <div class="form-group">
+              <select name="side" id="side" class="form-control dropdown-toggle" ngModel>
+                <option value="light" class="form-control dropdown-item">Light</option>
+                <option value="dark" class="dropdown-item">Dark</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Submit</button>
+          </form>
+    </div>
   </div>
-  <div class="form-group">
-    <select name="side" id="side" class="btn btn-secondary dropdown-toggle" ngModel>
-      <option value="light" class="dropdown-item">Light</option>
-      <option value="dark" class="dropdown-item">Dark</option>
-    </select>
-  </div>
-
-  <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Submit</button>
-</form>
+</div>
