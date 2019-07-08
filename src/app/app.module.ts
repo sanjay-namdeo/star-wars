@@ -13,7 +13,10 @@ import { RouterModule } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 
 const routes = [
-  {path: 'characters', component: AppTabComponent},
+  {path: 'characters', component: AppTabComponent, children: [
+    {path: '', redirectTo: 'all', pathMatch: 'full'},
+    {path: ':side', component: StarListComponent }
+  ]},
   {path: 'create-character', component: CreateStarComponent},
   {path: '**', redirectTo: '/characters'}
 ];

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, OnChanges } from '@angular/core';
 import { StarWarService } from '../starwars.sevice';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-star-list',
@@ -7,21 +8,24 @@ import { StarWarService } from '../starwars.sevice';
   styleUrls: ['./star-list.component.css']
 })
 export class StarListComponent implements OnInit {
-  @Input() characters;
-  swService: StarWarService;
-  @Output() changedSide = new EventEmitter<{name: '', side: ''}>();
+  @Output() changedSide = new EventEmitter<{ name: '', side: '' }>();
+  side: string;
+  characters;
 
-
-  @Input() selectedSide = 'all';
-
-  constructor(service: StarWarService) {
-    this.swService = service;
-   }
+  constructor(private swservice: StarWarService, private router: ActivatedRoute) {
+  }
 
   ngOnInit() {
+    this.router.params.subscribe(
+      (params) => {
+        this.side = params.side;
+        this.characters = this.swservice.getCharacters(params.side);
+      }
+    );
   }
 
   onChangeSide(char) {
-    this.changedSide.emit(char);
+    this.swservice.changeSide(char);
+    this.characters = this.swservice.getCharacters(this.side);
   }
 }
