@@ -1,9 +1,12 @@
+import { Subject } from 'rxjs';
+
 export class StarWarService {
-  characters = [
+  private characters = [
     { name: 'Spiderman', side: 'light' },
     { name: 'Batman', side: 'dark' },
     { name: 'Shazam', side: '' }
   ];
+  public changeSideObserver = new Subject<void>();
 
   getCharacters(side: string) {
     if (side === 'all') {
@@ -19,6 +22,7 @@ export class StarWarService {
   changeSide(char) {
     const pos = this.characters.findIndex((c) => c.name === char.name);
     this.characters[pos].side = char.side;
+    this.changeSideObserver.next();
   }
 
   addCharacter(char) {

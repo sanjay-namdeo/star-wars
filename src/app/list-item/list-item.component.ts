@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { StarWarService } from '../starwars.sevice';
 
 @Component({
   selector: 'app-list-item',
@@ -7,14 +8,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ListItemComponent implements OnInit {
   @Input() character;
-  @Output() sideChanged = new EventEmitter<{name: '', side: ''}>();
 
-  constructor() { }
+  constructor(private swService: StarWarService) { }
 
   ngOnInit() {
   }
 
   changeSide(changedSide) {
-    this.sideChanged.emit({name: this.character.name, side: changedSide});
+    this.swService.changeSide({name: this.character.name, side: changedSide});
   }
 }

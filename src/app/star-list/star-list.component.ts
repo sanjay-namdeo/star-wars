@@ -22,10 +22,8 @@ export class StarListComponent implements OnInit {
         this.characters = this.swservice.getCharacters(params.side);
       }
     );
-  }
-
-  onChangeSide(char) {
-    this.swservice.changeSide(char);
-    this.characters = this.swservice.getCharacters(this.side);
+    this.swservice.changeSideObserver.subscribe(() => {
+      this.characters = this.swservice.getCharacters(this.side);
+    });
   }
 }
